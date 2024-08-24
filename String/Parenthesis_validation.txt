@@ -1,0 +1,48 @@
+let brackets=['(',')','{','}', '[',']']
+/* Program to check a string with balanced brackets. */
+const isValid = (str) => {
+	
+	// Write code here
+  let stack = [];
+  let length = 0
+  //traverse through the string
+  for(let i=0; i<str.length; i++) {
+  	lastIndex = stack.length-1;
+  	//push only non-space characters
+  	if(str[i].trim()) {
+      if(lastIndex >= 0) {
+      //compare current str[i] with last value of stack. if there is matching parenthesis then pop that out or else push
+        if(str[i] ===")" && stack[lastIndex]==="(") {
+                stack.pop();
+         }
+         else if(str[i] ==="}" && stack[lastIndex]==="{") {
+                stack.pop();
+         }
+         else if(str[i] ==="]" && stack[lastIndex]==="[" ) {
+                stack.pop(); 
+         }
+         else {
+         		/* console.log(i, str[i]) */
+            stack.push(str[i])
+          }
+       }
+       else 
+        {
+        	/* console.log(i, str[i]) */;
+        	stack.push(str[i]);}
+      	/* console.log(stack) */
+      }
+      
+  }
+
+/* console.log(stack) */
+	//If stack is empty, return true for valid string 
+  if(stack.length===0) return true;
+	else return false;
+};
+
+const str1 = "({[]}()";
+const str2 = "}}";
+
+console.log(isValid(str1)); // Should return true
+console.log(isValid(str2)); // Should return false
