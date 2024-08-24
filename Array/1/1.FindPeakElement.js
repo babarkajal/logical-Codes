@@ -18,6 +18,7 @@ for (let i = 0; i < array.length; i++) {
   else if (i > 0 && i + 1 < array.length) {
     if (array[i] >= array[i + 1] && array[i] >= array[i - 1]) {
       peakElements.push(array[i]);
+    }
   } else if (i + 1 === array.length && array[i] > array[i - 1]) {
     peakElements.push(array[i]);
   }
